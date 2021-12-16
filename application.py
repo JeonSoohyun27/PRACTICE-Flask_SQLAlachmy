@@ -145,3 +145,38 @@ class User(db.Model):
 # mysql db상에 삭제된 모습 확인
 # mysql> select * from user;
 # Empty set (0.00 sec)
+
+# -----------------------query-------------------------
+#EQUAL / NOT EQUAL
+# filter 를 사용해야함.
+# EQUAL
+# In [2]: User.query.filter(User.id == 1).first()
+# Out[2]: <User 'spring'>
+
+# In [3]: user_id_1 = User.query.filter(User.id == 1).first()
+
+# In [4]: user_id_1
+# Out[4]: <User 'spring'>
+
+# In [5]: user_id_1.username
+# Out[5]: 'spring'
+
+# NOT EQUAL
+
+# In [6]: user_id_not_1 = User.query.filter(User.id != 1).all()
+    
+# In [7]: user_id_not_1
+# Out[7]:
+# [<User 'summer'>,
+#  <User 'fall'>,
+#  <User 'winter'>,
+#  <User 'seoul'>,
+#  <User 'tokyo'>]
+
+# In [8]: summer = User.query.filter(User.username == 'summer').first()
+
+# In [9]: summer
+# Out[9]: <User 'summer'>
+
+# In [10]: summer.email
+# Out[10]: 'summer@mail.com'
