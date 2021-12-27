@@ -180,3 +180,21 @@ class User(db.Model):
 
 # In [10]: summer.email
 # Out[10]: 'summer@mail.com'
+
+# -----------------------queryt-like-------------------------
+
+# gmail이 있는지 알아보는 명령어
+# In [4]: User.query.filter(User.email.like('%gmail%')).all()
+# Out[4]: [<User 'winter'>]
+
+#like는 '% 심볼을 가지고 검색어를 찾는기능
+
+# -----------------------queryt-in/not in-------------------------
+
+# in을 사용시에는 in_ 의 형태로 사용 
+# In [6]: User.query.filter(User.username.in_(['spring','fall'])).all()
+# Out[6]: [<User 'spring'>, <User 'fall'>]
+
+# not in 사용시에는 해당클래스 앞에 ~ 표시 붙혀서 사용    
+# In [7]: User.query.filter(~User.username.in_(['spring','fall'])).all()
+# Out[7]: [<User 'summer'>, <User 'winter'>, <User 'seoul'>, <User 'tokyo'>]
